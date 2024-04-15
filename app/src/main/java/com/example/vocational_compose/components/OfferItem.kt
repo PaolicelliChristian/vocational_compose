@@ -93,6 +93,7 @@ fun OfferItem() {
                     }
                 }
 
+
                 Image(
                     painter = painterResource(id = R.drawable.logo_vt_landing),
                     contentDescription = "Logo",

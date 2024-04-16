@@ -1,4 +1,4 @@
-package com.example.vocational_compose.screens
+package com.example.vocational_compose.navigation
 
 object Routes {
 

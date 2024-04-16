@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -22,6 +24,8 @@ import androidx.navigation.NavController
 import com.example.vocational_compose.R
 import com.example.vocational_compose.components.ChoiceCard
 import com.example.vocational_compose.components.NormalText
+import com.example.vocational_compose.components.recycleView.offer.OfferRecyclerView
+import com.example.vocational_compose.navigation.Routes
 
 @Composable
 fun HomeChoiceScreen(navController: NavController) {
@@ -49,10 +53,10 @@ fun HomeChoiceScreen(navController: NavController) {
                 buttonColor = ButtonDefaults.buttonColors(colorResource(id = R.color.userBlue)),
                 cardColor = CardColors(
                     containerColor = colorResource(id = R.color.userBlueLow),
-                    contentColor =  colorResource(id = R.color.trasparent),
-                    disabledContainerColor =  colorResource(id = R.color.trasparent),
-                    disabledContentColor =  colorResource(id = R.color.trasparent),
-                    ),
+                    contentColor = colorResource(id = R.color.trasparent),
+                    disabledContainerColor = colorResource(id = R.color.trasparent),
+                    disabledContentColor = colorResource(id = R.color.trasparent),
+                ),
                 goTo = {
                     navController.navigate(Routes.LOGIN_USER_SCREEN)
                 }
@@ -67,9 +71,9 @@ fun HomeChoiceScreen(navController: NavController) {
                 buttonColor = ButtonDefaults.buttonColors(colorResource(id = R.color.companyRed)),
                 cardColor = CardColors(
                     containerColor = colorResource(id = R.color.companyRedLow),
-                    contentColor =  colorResource(id = R.color.trasparent),
-                    disabledContainerColor =  colorResource(id = R.color.trasparent),
-                    disabledContentColor =  colorResource(id = R.color.trasparent),
+                    contentColor = colorResource(id = R.color.trasparent),
+                    disabledContainerColor = colorResource(id = R.color.trasparent),
+                    disabledContentColor = colorResource(id = R.color.trasparent),
                 ),
                 goTo = {
                     navController.navigate(Routes.LOGIN_COMPANY_SCREEN)
@@ -86,8 +90,27 @@ fun HomeChoiceScreen(navController: NavController) {
                     .fillMaxWidth(),
                 textAlign = TextAlign.Start
             )
+
+            Spacer(modifier = Modifier.size(30.dp))
+
+            OfferRecyclerView()
+
+            Button(
+                onClick = { /*TODO*/ },
+                Modifier
+                    .padding(horizontal = 20.dp)
+                    .fillMaxWidth(),
+            ) {
+                Text(
+                    text = "Vedi tutte le offerte"
+                )
+            }
+
+
         }
+
     }
+
 }
 
 

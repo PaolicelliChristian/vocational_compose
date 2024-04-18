@@ -26,9 +26,13 @@ import com.example.vocational_compose.components.ChoiceCard
 import com.example.vocational_compose.components.NormalText
 import com.example.vocational_compose.components.recycleView.offer.OfferRecyclerView
 import com.example.vocational_compose.navigation.Routes
+import com.example.vocational_compose.viewmodel.OfferViewModel
 
 @Composable
 fun HomeChoiceScreen(navController: NavController) {
+
+    val offerViewModel = OfferViewModel()
+
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -93,7 +97,7 @@ fun HomeChoiceScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.size(30.dp))
 
-            OfferRecyclerView()
+            OfferRecyclerView(offerViewModel)
 
             Button(
                 onClick = { /*TODO*/ },

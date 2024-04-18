@@ -12,9 +12,13 @@ import kotlinx.coroutines.launch
 class OfferViewModel : ViewModel() {
 
     private val _offerList = mutableListOf<UIOffer>()
-    var errorMessage: String by mutableStateOf("")
-    val offerList: List<UIOffer>
-        get() = _offerList
+
+    private var errorMessage: String by mutableStateOf("")
+    val offerList: List<UIOffer> get() = _offerList
+
+    init {
+        getOfferList()
+    }
 
 
     private fun getOfferList() {

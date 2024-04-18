@@ -1,21 +1,27 @@
 package com.example.vocational_compose.retrofit
 
 import com.example.vocational_compose.model.UIOffer
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
+import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-private const val BASE_URL = "http://localhost:8080"
+private const val BASE_URL = "http://172.20.51.93:8080"
 
 /**
  * Use the Retrofit builder to build a retrofit object using a kotlinx.serialization converter
  */
+val gson = GsonBuilder()
+    .serializeNulls()
+    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+    .setLenient()
+    .create()
+
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+    .addConverterFactory(GsonConverterFactory.create(gson))
     .baseUrl(BASE_URL)
     .build()
+
 
 
 /**

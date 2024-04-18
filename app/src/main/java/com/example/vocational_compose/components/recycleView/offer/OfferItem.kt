@@ -16,15 +16,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.vocational_compose.R
 import com.example.vocational_compose.components.NormalText
+import com.example.vocational_compose.model.UIOffer
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
-fun OfferItem() {
+fun OfferItem(offer: UIOffer) {
     Box(
         Modifier
             .fillMaxWidth()
@@ -41,14 +41,14 @@ fun OfferItem() {
                         .weight(0.7f)
                 ) {
                     NormalText(
-                        text = "Offer.Title",
+                        text = offer.title,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.fillMaxWidth(),
                         textColor = colorResource(id = R.color.userBlue),
                     )
                     NormalText(
-                        text = "CompanyName",
+                        text = offer.company.companyName,
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Normal,
                         modifier = Modifier.fillMaxWidth(),
@@ -62,7 +62,7 @@ fun OfferItem() {
                                 .weight(0.5f)
                         ) {
                             NormalText(
-                                text = "Offer.InsertMode",
+                                text = offer.insertMode,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Normal,
                                 modifier = Modifier
@@ -80,13 +80,13 @@ fun OfferItem() {
                                 .weight(0.5f)
                         ) {
                             NormalText(
-                                text = "offer.ImpegnoRichiest",
+                                text = offer.impegnoRichiesto,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Normal,
                                 modifier = Modifier
                             )
                             NormalText(
-                                text = "offer.workPlae",
+                                text = offer.workSector,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Normal,
                                 modifier = Modifier

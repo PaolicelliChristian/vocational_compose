@@ -10,26 +10,23 @@ import com.example.vocational_compose.retrofit.PublicApi
 import kotlinx.coroutines.launch
 
 class OfferViewModel : ViewModel() {
+
     private val _offerList = mutableListOf<UIOffer>()
-
     var errorMessage: String by mutableStateOf("")
-
-    val offerList: List <UIOffer>
+    val offerList: List<UIOffer>
         get() = _offerList
 
 
     private fun getOfferList() {
-        viewModelScope.launch{
-
+        viewModelScope.launch {
             val listResult = PublicApi.retrofitService.getOffer()
-            //offerList = listResult
+            try {
+                _offerList.addAll(listResult)
+            } catch (e: Exception) {
+                errorMessage = e.message.toString()
+            }
         }
     }
-
-
-
-
-
 
 
 }

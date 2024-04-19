@@ -1,12 +1,13 @@
-package com.example.vocational_compose.navigation
+package com.example.vocational_compose.data.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.vocational_compose.screens.HomeChoiceScreen
-import com.example.vocational_compose.screens.LoginCompanyScreen
-import com.example.vocational_compose.screens.LoginUserScreen
+import com.example.vocational_compose.presentation.screens.GeneralScreen
+import com.example.vocational_compose.presentation.screens.HomeChoiceScreen
+import com.example.vocational_compose.presentation.screens.LoginCompanyScreen
+import com.example.vocational_compose.presentation.screens.LoginUserScreen
 
 @Composable
 fun NavigationGraph(){
@@ -23,6 +24,10 @@ fun NavigationGraph(){
 
         composable(Routes.LOGIN_COMPANY_SCREEN) {
             LoginCompanyScreen(navController)
+        }
+
+        composable(Routes.AFTER_SCREEN) {
+            GeneralScreen(navController)
         }
 
     }

@@ -1,4 +1,4 @@
-package com.example.vocational_compose.ui.theme
+package com.example.vocational_compose.data.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

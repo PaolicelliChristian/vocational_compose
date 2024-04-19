@@ -15,5 +15,6 @@
     <color name="userBlueLow">#26208AC6</color>
     <color name="trasparent">#00208AC6</color>
     <color name="grey">#CFCFD5</color>
+    <color name="greyText">#9B9B9B</color>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.vocational_compose.components
+package com.example.vocational_compose.data.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures

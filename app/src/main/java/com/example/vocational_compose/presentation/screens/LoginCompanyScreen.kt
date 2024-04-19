@@ -1,9 +1,10 @@
-package com.example.vocational_compose.screens
+package com.example.vocational_compose.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,21 +20,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.vocational_compose.R
-import com.example.vocational_compose.components.EmailFieldComponent
-import com.example.vocational_compose.components.NormalText
-import com.example.vocational_compose.components.PasswordFieldComponent
-import com.example.vocational_compose.components.SwitchMinimal
-import com.example.vocational_compose.components.TopBar
+import com.example.vocational_compose.data.components.EmailFieldComponent
+import com.example.vocational_compose.data.components.NormalText
+import com.example.vocational_compose.data.components.PasswordFieldComponent
+import com.example.vocational_compose.data.components.SwitchMinimal
+import com.example.vocational_compose.data.components.TopBar
 
 @Composable
-fun LoginCompanyScreen(navController: NavController){
+fun LoginCompanyScreen(navController: NavController) {
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -134,6 +137,9 @@ fun LoginCompanyScreen(navController: NavController){
                         .padding(15.dp)
                 )
 
+                //Spinge giu
+                Spacer(modifier = Modifier.weight(1f))
+
                 Image(
                     painter = painterResource(id = R.drawable.vt_footerlogo),
                     contentDescription = "Logo",
@@ -144,14 +150,32 @@ fun LoginCompanyScreen(navController: NavController){
 
                 NormalText(
                     text = "Vocational Training s.r.l.  ©",
-                    fontSize = 14.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Light,
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
-                        .padding(5.dp)
+                        .padding(5.dp, bottom = 5.dp)
+                )
+
+                NormalText(
+                    text = "· IVA 01091950772 · CCIAA Matera REA n°71990 del 10/12/2003 · Privacy",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Light,
+                    textColor = colorResource(id = R.color.greyText),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(5.dp, bottom = 5.dp)
+
                 )
             }
         }
     }
-
 }
+
+
+
+
+
+
+

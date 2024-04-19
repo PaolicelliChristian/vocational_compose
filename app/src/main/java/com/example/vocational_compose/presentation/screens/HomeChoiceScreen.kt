@@ -1,4 +1,4 @@
-package com.example.vocational_compose.screens
+package com.example.vocational_compose.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -22,16 +22,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.vocational_compose.R
-import com.example.vocational_compose.components.ChoiceCard
-import com.example.vocational_compose.components.NormalText
-import com.example.vocational_compose.components.recycleView.offer.OfferRecyclerView
-import com.example.vocational_compose.navigation.Routes
-import com.example.vocational_compose.viewmodel.OfferViewModel
+import com.example.vocational_compose.data.components.ChoiceCard
+import com.example.vocational_compose.data.components.NormalText
+import com.example.vocational_compose.data.components.recycleView.offer.OfferRecyclerView
+import com.example.vocational_compose.data.navigation.Routes
 
 @Composable
 fun HomeChoiceScreen(navController: NavController) {
-
-    val offerViewModel = OfferViewModel()
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -97,7 +94,7 @@ fun HomeChoiceScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.size(30.dp))
 
-            OfferRecyclerView(offerViewModel)
+            OfferRecyclerView()
 
             Button(
                 onClick = { /*TODO*/ },

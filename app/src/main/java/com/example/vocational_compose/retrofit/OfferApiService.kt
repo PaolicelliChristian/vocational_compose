@@ -1,24 +1,18 @@
 package com.example.vocational_compose.retrofit
 
-import com.example.vocational_compose.model.UIOffer
-import com.google.gson.GsonBuilder
+import com.example.vocational_compose.data.model.UIElements
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Headers
 
 private const val BASE_URL = "http://172.20.51.93:8080"
 
 /**
  * Use the Retrofit builder to build a retrofit object using a kotlinx.serialization converter
  */
-val gson = GsonBuilder()
-    .serializeNulls()
-    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-    .setLenient()
-    .create()
-
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(GsonConverterFactory.create(gson))
+    .addConverterFactory(GsonConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
 
@@ -28,8 +22,9 @@ private val retrofit = Retrofit.Builder()
  * Retrofit service object for creating api calls
  */
 interface OfferApiService {
+    @Headers("Apikey: VKtYsk000kc8RXpduQpyEEmnoaGkrh")
     @GET("/web/getAllOfferts")
-    suspend fun getOffer(): List<UIOffer>
+    suspend fun getOffer(): UIElements
 }
 
 /**

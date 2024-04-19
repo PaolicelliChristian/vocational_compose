@@ -1,4 +1,4 @@
-package com.example.vocational_compose.components.recycleView.offer
+package com.example.vocational_compose.data.components.recycleView.offer
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -19,8 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.vocational_compose.R
-import com.example.vocational_compose.components.NormalText
-import com.example.vocational_compose.model.UIOffer
+import com.example.vocational_compose.data.components.NormalText
+import com.example.vocational_compose.data.model.UIOffer
 
 //@Preview(showBackground = true)
 @Composable

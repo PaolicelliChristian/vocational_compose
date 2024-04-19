@@ -1,4 +1,4 @@
-package com.example.vocational_compose.model
+package com.example.vocational_compose.data.model
 
 data class UIOffer(
 

@@ -1,4 +1,4 @@
-package com.example.vocational_compose.ui.theme
+package com.example.vocational_compose.data.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

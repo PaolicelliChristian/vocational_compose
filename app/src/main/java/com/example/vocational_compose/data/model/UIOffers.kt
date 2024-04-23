@@ -1,6 +1,6 @@
 package com.example.vocational_compose.data.model
 
-data class UIElements(
+data class UIOffers(
 
     val offers: List<UIOffer>,
 

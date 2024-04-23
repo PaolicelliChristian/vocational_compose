@@ -1,35 +1,46 @@
 package com.example.vocational_compose.presentation.viewmodel
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.vocational_compose.data.model.UIOffer
-import com.example.vocational_compose.retrofit.PublicApi
+import com.example.vocational_compose.retrofit.OffersRepository
+import com.example.vocational_compose.retrofit.Result
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class OfferViewModel : ViewModel() {
+@HiltViewModel
+class OfferViewModel @Inject constructor(
+    private val offersRepository: OffersRepository
+): ViewModel() {
 
-    private val _offerList = mutableListOf<UIOffer>()
 
-//    private val _offerList = MutableLiveData<UIElements>()
+    private val _offers = MutableStateFlow<List<UIOffer>>(emptyList())
+    val products = _offers.asStateFlow()
 
-    private var errorMessage: String by mutableStateOf("")
-    val offerList: List<UIOffer> get() = _offerList
+    private val _showErrorToastChannel = Channel<Boolean>()
+    val showErrorToastChannel = _showErrorToastChannel.receiveAsFlow()
 
     init {
-        getOfferList()
-    }
-
-    private fun getOfferList() {
         viewModelScope.launch {
-            val listResult = PublicApi.retrofitService.getOffer().offers
-            try {
-                _offerList.addAll(listResult)
-//                _offerList.value?.offers
-            } catch (e: Exception) {
-                errorMessage = e.message.toString()
+            offersRepository.getOffersList().collectLatest { result ->
+                when (result) {
+                    is Result.Error -> {
+                        _showErrorToastChannel.send(true)
+                    }
+
+                    is Result.Success -> {
+                        result.data?.let { offers ->
+                            _offers.update { offers }
+                        }
+                    }
+                }
             }
         }
     }

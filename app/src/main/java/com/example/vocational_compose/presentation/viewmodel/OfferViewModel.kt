@@ -6,9 +6,10 @@ import com.example.vocational_compose.data.model.UIOffer
 import com.example.vocational_compose.retrofit.OffersRepository
 import com.example.vocational_compose.retrofit.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
@@ -22,13 +23,17 @@ class OfferViewModel @Inject constructor(
 
 
     private val _offers = MutableStateFlow<List<UIOffer>>(emptyList())
-    val products = _offers.asStateFlow()
+    val products : StateFlow<List<UIOffer>> = _offers
 
     private val _showErrorToastChannel = Channel<Boolean>()
     val showErrorToastChannel = _showErrorToastChannel.receiveAsFlow()
 
     init {
-        viewModelScope.launch {
+        getOffers()
+    }
+
+    private fun getOffers() {
+        viewModelScope.launch(Dispatchers.IO) {
             offersRepository.getOffersList().collectLatest { result ->
                 when (result) {
                     is Result.Error -> {

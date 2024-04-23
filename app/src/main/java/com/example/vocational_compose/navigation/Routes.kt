@@ -1,4 +1,4 @@
-package com.example.vocational_compose.data.navigation
+package com.example.vocational_compose.navigation
 
 object Routes {
 

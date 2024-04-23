@@ -5,8 +5,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException
 import retrofit2.HttpException
+import javax.inject.Inject
 
-class OffersRepositoryImpl(
+class OffersRepositoryImpl @Inject constructor(
     private val offerApi: OfferApi
 ) : OffersRepository {
     override suspend fun getOffersList(): Flow<Result<List<UIOffer>>> {
@@ -32,6 +33,5 @@ class OffersRepositoryImpl(
         }
 
     }
-
 
 }

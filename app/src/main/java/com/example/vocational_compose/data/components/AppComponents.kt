@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.vocational_compose.R
-import com.example.vocational_compose.data.navigation.Routes
+import com.example.vocational_compose.navigation.Routes
 
 
 @Composable

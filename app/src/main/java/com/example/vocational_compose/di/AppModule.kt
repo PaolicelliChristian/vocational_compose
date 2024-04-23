@@ -18,7 +18,7 @@ import javax.inject.Singleton
 object AppModule {
 
     private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level = HttpLoggingInterceptor.Level.BASIC
     }
 
     private val client: OkHttpClient = OkHttpClient.Builder()
@@ -41,7 +41,6 @@ object AppModule {
     @Singleton
     fun provideOfferRepository(api: OfferApi): OffersRepository {
         return OffersRepositoryImpl(api)
-
     }
 
 }

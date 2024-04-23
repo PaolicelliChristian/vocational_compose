@@ -3,8 +3,9 @@ package com.example.vocational_compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.vocational_compose.data.navigation.NavigationGraph
+import com.example.vocational_compose.navigation.NavigationGraph
 import com.example.vocational_compose.presentation.viewmodel.OfferViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +15,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val offerViewModel = hiltViewModel<OfferViewModel>()
-            NavigationGraph()
+            AppEntryPoint()
         }
     }
+}
+
+
+@Composable
+fun AppEntryPoint() {
+    NavigationGraph()
 }

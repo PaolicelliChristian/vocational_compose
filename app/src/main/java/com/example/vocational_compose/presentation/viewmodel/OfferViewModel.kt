@@ -19,11 +19,11 @@ import javax.inject.Inject
 @HiltViewModel
 class OfferViewModel @Inject constructor(
     private val offersRepository: OffersRepository
-): ViewModel() {
+) : ViewModel() {
 
 
     private val _offers = MutableStateFlow<List<UIOffer>>(emptyList())
-    val products : StateFlow<List<UIOffer>> = _offers
+    val products: StateFlow<List<UIOffer>> = _offers
 
     private val _showErrorToastChannel = Channel<Boolean>()
     val showErrorToastChannel = _showErrorToastChannel.receiveAsFlow()

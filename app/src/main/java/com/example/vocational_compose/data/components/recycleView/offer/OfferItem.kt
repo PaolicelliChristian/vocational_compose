@@ -40,20 +40,24 @@ fun OfferItem(offer: UIOffer) {
                         .fillMaxWidth()
                         .weight(0.7f)
                 ) {
-                    NormalText(
-                        text = offer.title,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.fillMaxWidth(),
-                        textColor = colorResource(id = R.color.userBlue),
-                    )
-                    NormalText(
-                        text = offer.company.companyName,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Normal,
-                        modifier = Modifier.fillMaxWidth(),
-                        textColor = colorResource(id = R.color.grey)
-                    )
+                    offer.title?.let {
+                        NormalText(
+                            text = it,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.fillMaxWidth(),
+                            textColor = colorResource(id = R.color.userBlue),
+                        )
+                    }
+                    offer.company?.companyName?.let {
+                        NormalText(
+                            text = it,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Normal,
+                            modifier = Modifier.fillMaxWidth(),
+                            textColor = colorResource(id = R.color.grey)
+                        )
+                    }
 
                     Row {
                         Column(
@@ -61,12 +65,14 @@ fun OfferItem(offer: UIOffer) {
                                 .fillMaxWidth()
                                 .weight(0.5f)
                         ) {
-                            NormalText(
-                                text = offer.insertMode,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Normal,
-                                modifier = Modifier
-                            )
+                            offer.insertMode?.let {
+                                NormalText(
+                                    text = it,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Normal,
+                                    modifier = Modifier
+                                )
+                            }
                             NormalText(
                                 text = "Location.City",
                                 fontSize = 12.sp,
@@ -79,18 +85,22 @@ fun OfferItem(offer: UIOffer) {
                                 .fillMaxWidth()
                                 .weight(0.5f)
                         ) {
-                            NormalText(
-                                text = offer.impegnoRichiesto,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Normal,
-                                modifier = Modifier
-                            )
-                            NormalText(
-                                text = offer.workSector,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Normal,
-                                modifier = Modifier
-                            )
+                            offer.impegnoRichiesto?.let {
+                                NormalText(
+                                    text = it,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Normal,
+                                    modifier = Modifier
+                                )
+                            }
+                            offer.workSector?.let {
+                                NormalText(
+                                    text = it,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Normal,
+                                    modifier = Modifier
+                                )
+                            }
                         }
                     }
                 }

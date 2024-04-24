@@ -25,7 +25,6 @@ object AppModule {
         .addInterceptor(interceptor)
         .build()
 
-
     @Provides
     @Singleton
     fun instancedOfferApi(): OfferApi {

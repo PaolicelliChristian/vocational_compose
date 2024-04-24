@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.Surface
@@ -27,72 +29,73 @@ import com.example.vocational_compose.navigation.Routes
 
 @Composable
 fun HomeChoiceScreen(navController: NavController) {
-
     Surface(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp)
-        ) {
-
-            Image(
-                painter = painterResource(id = R.drawable.logo_vt_landing),
-                contentDescription = "Logo",
+        Column {
+            Column(
                 modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 20.dp, vertical = 10.dp)
+                    .verticalScroll(rememberScrollState())
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.logo_vt_landing),
+                    contentDescription = "Logo",
+                    modifier = Modifier
 //                    .padding(start = 40.dp, bottom = 20.dp)
-                    .size(width = 120.dp, height = 50.dp)
-            )
+                        .size(width = 120.dp, height = 50.dp)
+                )
 
-            ChoiceCard(
-                title = "Sono utente",
-                subTitle = "Cerca e trova lavoro nelle avvicinanze o da remoto",
-                textColor = colorResource(id = R.color.userBlue),
-                buttonColor = ButtonDefaults.buttonColors(colorResource(id = R.color.userBlue)),
-                cardColor = CardColors(
-                    containerColor = colorResource(id = R.color.userBlueLow),
-                    contentColor = colorResource(id = R.color.trasparent),
-                    disabledContainerColor = colorResource(id = R.color.trasparent),
-                    disabledContentColor = colorResource(id = R.color.trasparent),
-                ),
-                goTo = {
-                    navController.navigate(Routes.LOGIN_USER_SCREEN)
-                }
-            )
+                ChoiceCard(
+                    title = "Sono utente",
+                    subTitle = "Cerca e trova lavoro nelle avvicinanze o da remoto",
+                    textColor = colorResource(id = R.color.userBlue),
+                    buttonColor = ButtonDefaults.buttonColors(colorResource(id = R.color.userBlue)),
+                    cardColor = CardColors(
+                        containerColor = colorResource(id = R.color.userBlueLow),
+                        contentColor = colorResource(id = R.color.trasparent),
+                        disabledContainerColor = colorResource(id = R.color.trasparent),
+                        disabledContentColor = colorResource(id = R.color.trasparent),
+                    ),
+                    goTo = {
+                        navController.navigate(Routes.LOGIN_USER_SCREEN)
+                    }
+                )
 
-            Spacer(modifier = Modifier.size(40.dp))
+                Spacer(modifier = Modifier.size(40.dp))
 
-            ChoiceCard(
-                title = "Sono azienda",
-                subTitle = "Crea annunci di lavoro, gestisci i candidati e tanto altro",
-                textColor = colorResource(id = R.color.companyRed),
-                buttonColor = ButtonDefaults.buttonColors(colorResource(id = R.color.companyRed)),
-                cardColor = CardColors(
-                    containerColor = colorResource(id = R.color.companyRedLow),
-                    contentColor = colorResource(id = R.color.trasparent),
-                    disabledContainerColor = colorResource(id = R.color.trasparent),
-                    disabledContentColor = colorResource(id = R.color.trasparent),
-                ),
-                goTo = {
-                    navController.navigate(Routes.LOGIN_COMPANY_SCREEN)
-                }
-            )
+                ChoiceCard(
+                    title = "Sono azienda",
+                    subTitle = "Crea annunci di lavoro, gestisci i candidati e tanto altro",
+                    textColor = colorResource(id = R.color.companyRed),
+                    buttonColor = ButtonDefaults.buttonColors(colorResource(id = R.color.companyRed)),
+                    cardColor = CardColors(
+                        containerColor = colorResource(id = R.color.companyRedLow),
+                        contentColor = colorResource(id = R.color.trasparent),
+                        disabledContainerColor = colorResource(id = R.color.trasparent),
+                        disabledContentColor = colorResource(id = R.color.trasparent),
+                    ),
+                    goTo = {
+                        navController.navigate(Routes.LOGIN_COMPANY_SCREEN)
+                    }
+                )
 
-            Spacer(modifier = Modifier.size(30.dp))
+                Spacer(modifier = Modifier.size(20.dp))
 
-            NormalText(
-                text = "Offerte di lavoro",
-                fontSize = 28.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                textAlign = TextAlign.Start
-            )
+                NormalText(
+                    text = "Offerte di lavoro",
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    textAlign = TextAlign.Start
+                )
 
-            Spacer(modifier = Modifier.size(30.dp))
-
-            OfferRecyclerView()
+                Spacer(modifier = Modifier.size(30.dp))
 
 //            Button(
 //                onClick = { /*TODO*/ },
@@ -106,6 +109,9 @@ fun HomeChoiceScreen(navController: NavController) {
 //            }
 
 
+            }
+
+            OfferRecyclerView()
         }
 
     }

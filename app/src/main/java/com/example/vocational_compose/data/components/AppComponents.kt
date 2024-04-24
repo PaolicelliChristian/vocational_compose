@@ -48,7 +48,7 @@ import com.example.vocational_compose.navigation.Routes
 
 @Composable
 fun NormalText(
-    text: String,
+    text: String = "",
     fontSize: TextUnit,
     textColor: Color = Color.Black,
     fontWeight: FontWeight,

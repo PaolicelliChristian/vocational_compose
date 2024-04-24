@@ -17,19 +17,19 @@ class OffersRepositoryImpl @Inject constructor(
 
             } catch (e: IOException) {
                 e.printStackTrace()
-                emit(Result.Error(message = "Error loading offers"))
+                emit(Result.Error(null, message = "Error loading offers"))
                 return@flow
             } catch (e: HttpException) {
                 e.printStackTrace()
-                emit(Result.Error(message = "Error loading offers"))
+                emit(Result.Error(null, message = "Error loading offers"))
                 return@flow
             } catch (e: Exception) {
                 e.printStackTrace()
-                emit(Result.Error(message = "Error loading offers"))
+                emit(Result.Error(null, message = "Error loading offers"))
                 return@flow
             }
 
-            emit(Result.Success(offersFromApi.offers))
+            emit(Result.Success(offersFromApi.elements))
         }
 
     }

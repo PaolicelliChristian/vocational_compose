@@ -66,7 +66,7 @@ fun NormalText(
 }
 
 @Composable
-fun NormalButton(color: ButtonColors, goTo: () -> Unit) {
+fun NormalButton(color: ButtonColors, goTo: () -> Unit, buttonText: String) {
     Button(
         modifier = Modifier
             .fillMaxWidth(),
@@ -77,7 +77,7 @@ fun NormalButton(color: ButtonColors, goTo: () -> Unit) {
             goTo()
         }) {
         Text(
-            text = "Scegli >"
+            text = buttonText
         )
 
     }
@@ -90,7 +90,8 @@ fun ChoiceCard(
     textColor: Color,
     buttonColor: ButtonColors,
     goTo: () -> Unit,
-    cardColor: CardColors
+    cardColor: CardColors,
+    buttonText: String
 ) {
     OutlinedCard(
         border = BorderStroke(1.dp, Color.Gray),
@@ -124,7 +125,8 @@ fun ChoiceCard(
 
             NormalButton(
                 color = buttonColor,
-                goTo
+                goTo,
+                buttonText = buttonText
             )
         }
     }

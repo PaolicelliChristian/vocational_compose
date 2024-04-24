@@ -8,9 +8,11 @@ import com.example.vocational_compose.presentation.screens.GeneralScreen
 import com.example.vocational_compose.presentation.screens.HomeChoiceScreen
 import com.example.vocational_compose.presentation.screens.LoginCompanyScreen
 import com.example.vocational_compose.presentation.screens.LoginUserScreen
+import com.example.vocational_compose.presentation.screens.OfferShowcase
+import com.example.vocational_compose.presentation.viewmodel.OfferViewModel
 
 @Composable
-fun NavigationGraph(){
+fun NavigationGraph(viewModel: OfferViewModel){
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Routes.HOME_CHIOCE_SCREEN) {
@@ -26,9 +28,15 @@ fun NavigationGraph(){
             LoginCompanyScreen(navController)
         }
 
+        composable(Routes.OFFER_SHOWCASE) {
+            OfferShowcase(navController, viewModel)
+        }
+
         composable(Routes.AFTER_SCREEN) {
             GeneralScreen(navController)
         }
+
+
 
     }
 }

@@ -9,6 +9,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.vocational_compose.data.components.NormalText
 
+
+//@Preview(showBackground = true)
 @Composable
 fun GeneralScreen (navController: NavController) {
 

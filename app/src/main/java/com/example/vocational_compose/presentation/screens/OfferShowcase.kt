@@ -9,12 +9,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.vocational_compose.data.components.NormalText
+import com.example.vocational_compose.data.components.TopBar
 import com.example.vocational_compose.data.components.recycleView.offer.OfferRecyclerView
 import com.example.vocational_compose.presentation.viewmodel.OfferViewModel
 
@@ -27,16 +24,25 @@ fun OfferShowcase(navController: NavController, viewModel: OfferViewModel) {
             .padding(20.dp)
     ) {
         Column {
-            NormalText(
-                text = "Offerte di lavoro",
-                fontSize = 28.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                textAlign = TextAlign.Start
+
+            TopBar(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                navController,
+                text= "Offerte di lavoro"
             )
 
-            Spacer(modifier = Modifier.size(40.dp))
+//            NormalText(
+//                text = "Offerte di lavoro",
+//                fontSize = 28.sp,
+//                fontWeight = FontWeight.Bold,
+//                modifier = Modifier
+//                    .fillMaxWidth(),
+//                textAlign = TextAlign.Start
+//            )
+
+            Spacer(modifier = Modifier.size(20.dp))
 
             OfferRecyclerView(viewModel)
         }

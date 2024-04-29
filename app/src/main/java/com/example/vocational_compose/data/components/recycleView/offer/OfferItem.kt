@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.vocational_compose.R
 import com.example.vocational_compose.data.components.NormalText
-import com.example.vocational_compose.data.model.UIOffer
+import com.example.vocational_compose.data.model.offer.UIOffer
 
 //@Preview(showBackground = true)
 @Composable

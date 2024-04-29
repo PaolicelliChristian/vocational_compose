@@ -1,4 +1,4 @@
-package com.example.vocational_compose.data.model
+package com.example.vocational_compose.data.model.offer
 
 data class UILocation(
 

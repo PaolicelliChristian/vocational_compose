@@ -51,7 +51,8 @@ fun LoginCompanyScreen(navController: NavController) {
                 Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                navController
+                navController,
+                text= "Login"
             )
 
             Divider(

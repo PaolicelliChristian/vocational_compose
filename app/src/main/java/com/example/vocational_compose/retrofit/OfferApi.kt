@@ -1,6 +1,6 @@
 package com.example.vocational_compose.retrofit
 
-import com.example.vocational_compose.data.model.UIOffers
+import com.example.vocational_compose.data.model.offer.UIOffers
 import retrofit2.http.GET
 import retrofit2.http.Headers
 

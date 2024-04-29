@@ -11,6 +11,4 @@ object Routes {
     const val AFTER_SCREEN = "AFTER_SCREEN"
 
 
-
-
 }

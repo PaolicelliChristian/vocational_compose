@@ -179,8 +179,8 @@ fun ChoiceCard(
 @Composable
 fun TopBar(
     modifier: Modifier,
-    navController: NavController
-
+    navController: NavController,
+    text: String
 ) {
     Row(
         modifier = modifier,
@@ -199,7 +199,7 @@ fun TopBar(
         Spacer(modifier = Modifier.weight(1f))
 
         NormalText(
-            text = "Login",
+            text = text,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier

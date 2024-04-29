@@ -1,6 +1,6 @@
 package com.example.vocational_compose.retrofit
 
-import com.example.vocational_compose.data.model.UIOffer
+import com.example.vocational_compose.data.model.offer.UIOffer
 import kotlinx.coroutines.flow.Flow
 
 interface OffersRepository {

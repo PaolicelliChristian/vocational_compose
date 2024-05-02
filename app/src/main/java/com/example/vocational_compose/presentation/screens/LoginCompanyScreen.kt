@@ -19,8 +19,11 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,13 +31,39 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.vocational_compose.MainActivity
 import com.example.vocational_compose.R
+import com.example.vocational_compose.data.components.EmailFieldComponent
 import com.example.vocational_compose.data.components.NormalText
+import com.example.vocational_compose.data.components.PasswordFieldComponent
 import com.example.vocational_compose.data.components.SwitchMinimal
 import com.example.vocational_compose.data.components.TopBar
+import com.example.vocational_compose.navigation.Routes
+import com.example.vocational_compose.presentation.viewmodel.LoginViewModel
 
 @Composable
-fun LoginCompanyScreen(navController: NavController) {
+fun LoginCompanyScreen(
+    navController: NavController,
+    loginViewModel: LoginViewModel,
+    mainActivity: MainActivity
+) {
+
+    val context = LocalContext.current
+
+    loginViewModel.state.observe(mainActivity) {
+        navController.navigate(Routes.AFTER_SCREEN)
+    }
+
+
+    val email = remember {
+        mutableStateOf("")
+    }
+
+
+    val password = remember {
+        mutableStateOf("")
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -50,7 +79,7 @@ fun LoginCompanyScreen(navController: NavController) {
                     .fillMaxWidth()
                     .padding(10.dp),
                 navController,
-                text= "Login"
+                text = "Login"
             )
 
             Divider(
@@ -91,24 +120,30 @@ fun LoginCompanyScreen(navController: NavController) {
                     modifier = Modifier.padding(bottom = 20.dp)
                 )
 
-//                EmailFieldComponent(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(horizontal = 15.dp)
-//                        .background(
-//                            colorResource(id = R.color.white),
-//                        )
-//                )
-//
-//
-//                PasswordFieldComponent(
-//                    modifier = Modifier
-//                        .padding(horizontal = 15.dp)
-//                        .fillMaxWidth()
-//                        .background(
-//                            colorResource(id = R.color.white)
-//                        )
-//                )
+                EmailFieldComponent(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 15.dp)
+                        .background(
+                            colorResource(id = R.color.white),
+                        ),
+                    onValueChange = {
+                        email.value = it
+                    }
+                )
+
+
+                PasswordFieldComponent(
+                    modifier = Modifier
+                        .padding(horizontal = 15.dp)
+                        .fillMaxWidth()
+                        .background(
+                            colorResource(id = R.color.white)
+                        ),
+                    onValueChange = {
+                        password.value = it
+                    }
+                )
 
 
                 Row(
@@ -127,7 +162,13 @@ fun LoginCompanyScreen(navController: NavController) {
                         .padding(horizontal = 15.dp),
                     colors = ButtonDefaults.buttonColors(colorResource(id = R.color.companyRed)),
                     shape = RoundedCornerShape(1.dp),
-                    onClick = { /*TODO*/ }) {
+                    onClick = {
+                        loginViewModel.getUserLogin(
+                            email.value,
+                            password.value,
+                            "company"
+                        )
+                    }) {
                     Text(
                         text = "V Accedere"
                     )

@@ -168,8 +168,6 @@ fun LoginUserScreen(
                             password.value,
                             "user"
                         )
-
-
                     }) {
                     Text(
                         text = "V Accedere"

@@ -31,7 +31,7 @@ fun NavigationGraph(
         }
 
         composable(Routes.LOGIN_COMPANY_SCREEN) {
-            LoginCompanyScreen(navController)
+            LoginCompanyScreen(navController, loginViewModel, mainActivity)
         }
 
         composable(Routes.OFFER_SHOWCASE) {

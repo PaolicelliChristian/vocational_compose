@@ -33,15 +33,6 @@ fun OfferShowcase(navController: NavController, viewModel: OfferViewModel) {
                 text= "Offerte di lavoro"
             )
 
-//            NormalText(
-//                text = "Offerte di lavoro",
-//                fontSize = 28.sp,
-//                fontWeight = FontWeight.Bold,
-//                modifier = Modifier
-//                    .fillMaxWidth(),
-//                textAlign = TextAlign.Start
-//            )
-
             Spacer(modifier = Modifier.size(20.dp))
 
             OfferRecyclerView(viewModel)

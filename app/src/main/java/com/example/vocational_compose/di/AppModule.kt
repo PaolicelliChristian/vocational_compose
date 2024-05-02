@@ -1,8 +1,11 @@
 package com.example.vocational_compose.di
 
-import com.example.vocational_compose.retrofit.OfferApi
-import com.example.vocational_compose.retrofit.OffersRepository
-import com.example.vocational_compose.retrofit.OffersRepositoryImpl
+import com.example.vocational_compose.retrofit.repository.LoginRepository
+import com.example.vocational_compose.retrofit.repository.LoginRepositoryImpl
+import com.example.vocational_compose.retrofit.repository.OffersRepository
+import com.example.vocational_compose.retrofit.repository.OffersRepositoryImpl
+import com.example.vocational_compose.retrofit.service.LoginApi
+import com.example.vocational_compose.retrofit.service.OfferApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,5 +44,20 @@ object AppModule {
     fun provideOfferRepository(api: OfferApi): OffersRepository {
         return OffersRepositoryImpl(api)
     }
+
+    @Provides
+    @Singleton
+    fun instancedLoginApi(): LoginApi {
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(OfferApi.BASE_URL_IP)
+            .client(client)
+            .build()
+            .create(LoginApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun loginRepository(api: LoginApi) = LoginRepositoryImpl(api) as  LoginRepository
 
 }

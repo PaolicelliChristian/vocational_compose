@@ -1,6 +1,8 @@
-package com.example.vocational_compose.retrofit
+package com.example.vocational_compose.retrofit.repository
 
 import com.example.vocational_compose.data.model.offer.UIOffer
+import com.example.vocational_compose.retrofit.Result
+import com.example.vocational_compose.retrofit.service.OfferApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException

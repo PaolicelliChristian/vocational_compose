@@ -29,9 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.vocational_compose.R
-import com.example.vocational_compose.data.components.EmailFieldComponent
 import com.example.vocational_compose.data.components.NormalText
-import com.example.vocational_compose.data.components.PasswordFieldComponent
 import com.example.vocational_compose.data.components.SwitchMinimal
 import com.example.vocational_compose.data.components.TopBar
 
@@ -93,24 +91,24 @@ fun LoginCompanyScreen(navController: NavController) {
                     modifier = Modifier.padding(bottom = 20.dp)
                 )
 
-                EmailFieldComponent(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 15.dp)
-                        .background(
-                            colorResource(id = R.color.white),
-                        )
-                )
-
-
-                PasswordFieldComponent(
-                    modifier = Modifier
-                        .padding(horizontal = 15.dp)
-                        .fillMaxWidth()
-                        .background(
-                            colorResource(id = R.color.white)
-                        )
-                )
+//                EmailFieldComponent(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(horizontal = 15.dp)
+//                        .background(
+//                            colorResource(id = R.color.white),
+//                        )
+//                )
+//
+//
+//                PasswordFieldComponent(
+//                    modifier = Modifier
+//                        .padding(horizontal = 15.dp)
+//                        .fillMaxWidth()
+//                        .background(
+//                            colorResource(id = R.color.white)
+//                        )
+//                )
 
 
                 Row(

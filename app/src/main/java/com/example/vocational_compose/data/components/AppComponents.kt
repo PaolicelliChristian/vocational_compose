@@ -219,8 +219,28 @@ fun TopBar(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EmailFieldComponent(modifier: Modifier) {
-    var text by remember { mutableStateOf("") }
+fun EmailFieldComponent(
+    modifier: Modifier,
+//    text: String? = null,
+//    loginViewModel: LoginViewModel,
+    onValueChange: (text: String) -> Unit
+) {
+
+//    val state = loginViewModel.state.value
+//
+//    val context = LocalContext.current
+//
+//    val email = remember { mutableStateOf("") }
+
+
+//    if (text != null && text != "Null") {
+//
+//        LaunchedEffect(key1 = Unit) {
+//
+//            email.value = text
+//
+//        }
+//    }
 
     Column() {
         Text(
@@ -242,8 +262,8 @@ fun EmailFieldComponent(modifier: Modifier) {
                 cursorColor = colorResource(id = R.color.black),
             ),
 
-            onValueChange = {
-            },
+            onValueChange = onValueChange,
+
             onErrorListener = {
             },
             startIcon = Icons.Filled.Email
@@ -253,8 +273,13 @@ fun EmailFieldComponent(modifier: Modifier) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordFieldComponent(modifier: Modifier) {
-    var password by rememberSaveable { mutableStateOf("") }
+fun PasswordFieldComponent(
+    modifier: Modifier,
+    onValueChange: (text: String) -> Unit
+) {
+    var password by rememberSaveable {
+        mutableStateOf("")
+    }
 
     Column(
     ) {
@@ -279,8 +304,7 @@ fun PasswordFieldComponent(modifier: Modifier) {
 //            visualTransformation = PasswordVisualTransformation(),
 //            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
 
-            onValueChange = {
-            },
+            onValueChange = onValueChange,
             onErrorListener = {
             },
             startIcon = Icons.Filled.Lock

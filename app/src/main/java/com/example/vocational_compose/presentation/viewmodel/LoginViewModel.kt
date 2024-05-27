@@ -1,8 +1,6 @@
 package com.example.vocational_compose.presentation.viewmodel
 
 import android.content.Context
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -65,12 +63,7 @@ class LoginViewModel @Inject constructor(
 
                     is Result.Error -> {
                         delay(200)
-                        Toast.makeText(appContext, "Error", LENGTH_SHORT)
-//                        _state.value = LoginState(
-//                            error = result.message ?: "An unexpected error occurred",
-//                            isLoading = false
-//                        )
-
+                        result.message ?: "An unexpected error occurred"
                     }
                 }
 

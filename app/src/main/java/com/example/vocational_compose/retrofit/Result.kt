@@ -6,6 +6,7 @@ sealed class Result<T>(
 ) {
 
     class Success<T>(val data: T?) : Result<T>()
-    class Error<T>(val error: T?, val message: String?) : Result<T>()
+    class Error<T>(val error:T? = null, val message: String?) : Result<T>()
+
 
 }

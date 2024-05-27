@@ -38,7 +38,6 @@ fun OfferShowcase(navController: NavController, viewModel: OfferViewModel) {
             OfferRecyclerView(viewModel)
         }
 
-
     }
 
 

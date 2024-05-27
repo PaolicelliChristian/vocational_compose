@@ -28,15 +28,15 @@ class LoginUseCase @Inject constructor(
             }
         } catch (e: IOException) {
             e.printStackTrace()
-            emit(Result.Error(null, message = "Error loading"))
+            emit(Result.Error(message = e.localizedMessage ?: "Error IOExcetion"))
             return@flow
         } catch (e: HttpException) {
             e.printStackTrace()
-            emit(Result.Error(null, message = "Error loading"))
+            emit(Result.Error(message = e.localizedMessage ?: "Error HttpException"))
             return@flow
         } catch (e: Exception) {
             e.printStackTrace()
-            emit(Result.Error(null, message = "Error loading"))
+            emit(Result.Error(message = e.localizedMessage ?: "Error Exception"))
             return@flow
         }
 

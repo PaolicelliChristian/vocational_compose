@@ -10,12 +10,11 @@ import com.example.vocational_compose.presentation.viewmodel.OfferViewModel
 @Composable
 fun OfferRecyclerView(viewModel: OfferViewModel) {
 
-    //https://youtu.be/LFlobqW8Sy8?t=4920
     val list = viewModel.products.collectAsState().value
 
     LazyColumn(modifier = Modifier) {
 
-        items(count = 10) {
+        items(count = 20) {
             list.forEach{
                 OfferItem(offer = it)
             }
